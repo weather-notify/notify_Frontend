@@ -3,9 +3,7 @@ import Header from 'component/header/Header';
 
 const HeaderContainer = () => {
     return (
-        <div>
-            <Header />
-        </div>
+        <Header />
     )
 }
 
