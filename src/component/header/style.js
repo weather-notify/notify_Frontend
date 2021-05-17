@@ -19,9 +19,9 @@ export const Notify = styled.div`
 export const SignButtonWrapper = styled.div`
     display: flex;
     align-items: center;
-    margin: 10px;
+    margin: 20px;
     > div {
-        margin: 0px 10px;
+        margin: 0px 20px;
     }
 `
 
