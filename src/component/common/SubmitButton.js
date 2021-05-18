@@ -4,7 +4,7 @@ import * as S from './style';
 
 const SubmitButton = () => {
     return (
-        <S.SubmitButton></S.SubmitButton>
+        <S.SubmitButton>Submit</S.SubmitButton>
     )
 }
 
