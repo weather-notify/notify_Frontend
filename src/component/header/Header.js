@@ -6,7 +6,7 @@ import bell from 'asset/icons8-bell-100.png';
 const token = localStorage.getItem("token");
 
 const Header = () => (
-    <S.Header>
+    <S.Container>
         <S.Notify>Notify</S.Notify>
         <S.SignButtonWrapper>
         {
@@ -21,7 +21,7 @@ const Header = () => (
                 </>
         }
         </S.SignButtonWrapper> 
-    </S.Header>
+    </S.Container>
 );
 
 export default Header;
