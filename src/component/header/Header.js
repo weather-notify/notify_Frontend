@@ -1,7 +1,8 @@
 import React from 'react';
+
 import * as S from './style';
 
-import bell from 'asset/icons8-bell-100.png';
+import * as I from 'asset/index';
 
 const token = localStorage.getItem("token");
 
@@ -12,7 +13,7 @@ const Header = () => (
         {
             token && token.length >= 0 ?
                 <>
-                    <S.Bell src={bell} alt="bell" />
+                    <S.Bell src={I.bell} alt="bell" />
                     <S.Menu>배현호님</S.Menu>
                 </> : 
                 <>
