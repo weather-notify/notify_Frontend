@@ -10,7 +10,7 @@ export const SubmitButton = styled.button.attrs({
     background-color: rgba(0, 0, 200);
     border: none;
     border-radius: 50px;
-    margin: 4%;
+    margin: 2%;
     position: absolute;
-    left: 31%;
+    left: 34%;
 `
