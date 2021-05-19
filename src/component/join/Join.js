@@ -6,9 +6,9 @@ const Join = () => {
     return (
         <S.Container>
             <S.InputLine>
-                <S.Email>
+                <S.InfoDiv>
                     <S.Info>이메일: </S.Info>
-                </S.Email>
+                </S.InfoDiv>
                 <S.InputEmail></S.InputEmail>
                 <S.CheckButton>check</S.CheckButton>
             </S.InputLine>
