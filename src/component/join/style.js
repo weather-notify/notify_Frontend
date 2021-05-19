@@ -20,12 +20,6 @@ export const InfoDiv = styled.div`
     float: left;
 `
 
-export const Email = styled.div`
-    width: 25%;
-    height: 100%;
-    float: left;
-`
-
 export const Info = styled.p`
     text-align: right;
     font-size: 2rem;
