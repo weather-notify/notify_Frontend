@@ -10,13 +10,15 @@ const Login = () => {
                 <S.InfoDiv>
                     <S.Info>이메일: </S.Info>
                 </S.InfoDiv>
-                <S.InputEmail></S.InputEmail>
+                <S.InputEmail
+                    placeholder='email'></S.InputEmail>
             </S.InputLine>
             <S.InputLine>
                 <S.InfoDiv>
                     <S.Info>비밀번호: </S.Info>
                 </S.InfoDiv>
-                <S.InputPassword></S.InputPassword>
+                <S.InputPassword
+                    placeholder='password'></S.InputPassword>
             </S.InputLine>
         </S.Container>
     )
