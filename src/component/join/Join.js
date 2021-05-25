@@ -73,7 +73,8 @@ const Join = () => {
                                 비밀번호가 일치하지 않습니다.
                             </S.InputError> : null
                     }
-                </S.InputLine>
+            </S.InputLine>
+            <S.SubmitButton>Submit</S.SubmitButton>    
         </S.Container>
     )
 }
