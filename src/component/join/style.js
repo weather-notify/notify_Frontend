@@ -48,6 +48,12 @@ export const InputEmail = styled.input.attrs({
     border: 1px solid;
 `
 
+export const InputError = styled.p`
+    font-size: 1rem;
+    color: red;
+    margin: 0 27% 0 0;
+`
+
 export const InputPassword = styled.input.attrs({
     type: 'password',
     checked: true
