@@ -1,18 +1,43 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
+import {useHistory} from 'react-router-dom'
 import * as S from './style';
 
 const Join = () => {
+    var history = useHistory();
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [passwordCheck, setPasswordCheck] = useState("");
+    const [isEmail, setIsEmail] = useState(false);
+    const [isCheck, setIsCheck] = useState(false);
     const [checkEmail, setCheckEmail] = useState(false);
+    const [passwordCheck, setPasswordCheck] = useState("");
     const [checkPassword, setCheckPassword] = useState(false);
 
     const onChangeEmail = (e) => {
         setEmail(e.target.value);
         emailCheck(email);
     };
+
+    const isEmailCheck = () => {
+        if(checkEmail === true) {
+            axios.get('http://localhost:8000/user/email', {
+                params: {
+                    email: email
+                }
+            }).then(res => {
+                console.log(res.data);
+                setIsCheck(true);
+                setIsEmail(res.data);
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+    }
+
+    const onChangeName = (e) => {
+        setName(e.target.value);
+    }
 
     const emailCheck = (str) => {
         const re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]*.[a-zA-Z]{2,3}$/i;
@@ -28,6 +53,19 @@ const Join = () => {
         setCheckPassword(password === e.target.value ? true : false);
     }
 
+    const onSubmit = () => {
+        axios.post('http://localhost:8000/user', {
+            email: email,
+            name: name,
+            password: password,
+        }).then((res) => {
+            console.log(res)
+            history.push('/')
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+    
     return (
         <S.Container>
             <S.InputLine>
@@ -37,12 +75,24 @@ const Join = () => {
                 <S.InputEmail
                     placeholder='이메일'
                     onChange={onChangeEmail}></S.InputEmail>
-                <S.CheckButton>check</S.CheckButton>
+                <S.CheckButton onClick={isEmailCheck}>check</S.CheckButton>
                 { 
                     email !== "" && checkEmail === false ? 
                         <S.InputError>
                             이메일 형식이 올바르지 않습니다.
                         </S.InputError> : null
+                }
+                {
+                    isCheck ?
+                        !isEmail && checkEmail ? 
+                            <S.InputEmailInfo>
+                                사용할 수 있는 이메일입니다.
+                            </S.InputEmailInfo> 
+                        :
+                            <S.InputError>
+                                사용할 수 없는 이메일입니다.
+                            </S.InputError>
+                    : null
                 }
             </S.InputLine>
             <S.InputLine>
@@ -50,7 +100,8 @@ const Join = () => {
                     <S.Info>이름: </S.Info>
                 </S.InfoDiv>
                 <S.InputBox
-                    placeholder='이름'></S.InputBox>
+                    placeholder='이름'
+                    onChange={onChangeName}></S.InputBox>
                 </S.InputLine>
             <S.InputLine>
                 <S.InfoDiv>
@@ -74,7 +125,7 @@ const Join = () => {
                             </S.InputError> : null
                     }
             </S.InputLine>
-            <S.SubmitButton>Submit</S.SubmitButton>    
+            <S.SubmitButton onClick={onSubmit}>Submit</S.SubmitButton>    
         </S.Container>
     )
 }
