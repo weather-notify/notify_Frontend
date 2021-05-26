@@ -53,3 +53,17 @@ export const InputPassword = styled.input.attrs({
     margin-left: 1%;
     border: 1px solid;
 `
+
+export const SubmitButton = styled.button.attrs({
+    type: 'submit'
+})`
+    width: 30%;
+    padding: 1%;
+    font-size: 1.3rem;
+    color: white;
+    background-color: rgba(0, 0, 200);
+    border: none;
+    border-radius: 50px;
+    margin: 2%;
+    left: 34%;
+`
