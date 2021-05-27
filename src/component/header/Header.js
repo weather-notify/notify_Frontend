@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import * as S from './style';
 import * as I from 'asset/index';
 
-const token = localStorage.getItem("token");
+const token = localStorage.getItem("accessToken");
 
 
 const Header = () => {
