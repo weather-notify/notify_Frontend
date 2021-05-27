@@ -41,4 +41,5 @@ export const SelectBox = styled.select`
 
 export const SelectOption = styled.option`
     color: rgba(0, 0, 200);
+    font-size: 1rem;
 `
