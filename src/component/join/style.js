@@ -48,6 +48,18 @@ export const InputEmail = styled.input.attrs({
     border: 1px solid;
 `
 
+export const InputError = styled.p`
+    font-size: 1rem;
+    color: red;
+    margin: 0 27% 0 0;
+`
+
+export const InputEmailInfo = styled.p`
+    font-size: 1rem;
+    color: greenyellow;
+    margin: 0 27% 0 0;
+`
+
 export const InputPassword = styled.input.attrs({
     type: 'password',
     checked: true
@@ -72,13 +84,16 @@ export const CheckButton = styled.button`
     background-color: rgba(187, 215, 240);
 `
 
-export const SubmitButton = styled.button`
-    width: 23%;
+export const SubmitButton = styled.button.attrs({
+    type: 'submit'
+})`
+    width: 30%;
     padding: 1%;
     font-size: 1.3rem;
     color: white;
     background-color: rgba(0, 0, 200);
     border: none;
     border-radius: 50px;
-    margin: 2%;
+    margin: 1%;
+    left: 31%;
 `
