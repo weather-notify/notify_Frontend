@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-
 import axios from 'axios';
+
+import { useHistory } from 'react-router-dom';
 
 import * as S from './style';
 
 const Main = () => {
+    const history = useHistory();
     const [deep1, setDeep1] = useState([]);
     const [deep2, setDeep2] = useState([]);
     const [deep3, setDeep3] = useState([]);
@@ -59,6 +61,22 @@ const Main = () => {
         setDistrict(e.target.value);
     }
 
+    const getPoint = () => {
+        if(city !== '' && county !== '' && district !== '') {
+            axios.get(`http://localhost:8000/excel/coordinate?deep1=${city}&deep2=${county}&deep3=${district}`)
+            .then(res => {
+                history.push({
+                    pathname: '/weather',
+                    state: {point: res.data}
+                });
+            }).catch(err => {
+                console.log(err);
+            }) 
+        } else {
+            alert("지역을 모두 선택해주세요");
+        }
+    }
+
     return (
         <S.Container>
             <S.TitleContainer>
@@ -87,7 +105,7 @@ const Main = () => {
                     }
                 </S.SelectBox>
             </S.MenuContainer>
-            <S.SubmitButton>Submit</S.SubmitButton>
+            <S.SubmitButton onClick={getPoint}>Submit</S.SubmitButton>
         </S.Container>
     )
 }

@@ -1,8 +1,8 @@
 import React from 'react';
+
 import { useHistory } from 'react-router';
 
 import * as S from './style';
-
 import * as I from 'asset/index';
 
 const token = localStorage.getItem("token");
