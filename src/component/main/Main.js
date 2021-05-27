@@ -12,6 +12,12 @@ const Main = () => {
     const [county, setCounty] = useState('');
     const [district, setDistrict] = useState('');
 
+    useEffect(() => {
+        getDeep1()
+        deep2.unshift("-");
+        deep3.unshift("-");
+    }, []);
+
     const getDeep1 = () => {
         axios.get('http://localhost:8000/excel/deep1')
         .then(res => {
@@ -49,11 +55,9 @@ const Main = () => {
         })
     }
 
-    useEffect(() => {
-        getDeep1()
-        deep2.unshift("-");
-        deep3.unshift("-");
-    }, []);
+    const setDeep = (e) => {
+        setDistrict(e.target.value);
+    }
 
     return (
         <S.Container>
@@ -75,7 +79,7 @@ const Main = () => {
                             )
                     }
                 </S.SelectBox>
-                <S.SelectBox>
+                <S.SelectBox onChange={setDeep}>
                     {
                         deep3.map((now) =>
                                 <S.SelectOption key={now} value={now}>{now}</S.SelectOption>
