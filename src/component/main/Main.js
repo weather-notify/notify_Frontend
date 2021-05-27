@@ -87,6 +87,7 @@ const Main = () => {
                     }
                 </S.SelectBox>
             </S.MenuContainer>
+            <S.SubmitButton>Submit</S.SubmitButton>
         </S.Container>
     )
 }

@@ -43,3 +43,17 @@ export const SelectOption = styled.option`
     color: rgba(0, 0, 200);
     font-size: 1rem;
 `
+
+export const SubmitButton = styled.button.attrs({
+    type: 'submit'
+})`
+    width: 30%;
+    padding: 1%;
+    font-size: 1.3rem;
+    color: white;
+    background-color: rgba(0, 0, 200);
+    border: none;
+    border-radius: 50px;
+    margin: 4%;
+    left: 31%;
+`
