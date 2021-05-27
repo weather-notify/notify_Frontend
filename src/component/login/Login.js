@@ -32,6 +32,7 @@ const Login = () => {
             localStorage.setItem('tokenType', res.data.tokenType);
 
             history.push('/');
+            window.location.reload();
         }).catch(err => {
             console.log(err);
         })
