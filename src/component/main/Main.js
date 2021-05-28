@@ -7,6 +7,10 @@ import * as S from './style';
 
 const Main = () => {
     const history = useHistory();
+    
+    const token = localStorage.getItem("accessToken");
+    const tokenType = localStorage.getItem("tokenType");
+
     const [deep1, setDeep1] = useState([]);
     const [deep2, setDeep2] = useState([]);
     const [deep3, setDeep3] = useState([]);
@@ -62,19 +66,22 @@ const Main = () => {
     }
 
     const getPoint = () => {
-        if(city !== '' && county !== '' && district !== '') {
-            axios.get(`http://localhost:8000/excel/coordinate?deep1=${city}&deep2=${county}&deep3=${district}`)
+        city !== '' && county !== '' && district !== '' ?
+            axios.get(`http://localhost:8000/excel/coordinate?deep1=${city}&deep2=${county}&deep3=${district}`, {
+                headers: {
+                    'Authorization': `${tokenType} ${token}`
+                }
+            }) 
             .then(res => {
                 history.push({
                     pathname: '/weather',
                     state: {point: res.data}
                 });
             }).catch(err => {
-                console.log(err);
-            }) 
-        } else {
+                alert("로그인이 필요한 서비스입니다.");
+            })
+        :
             alert("지역을 모두 선택해주세요");
-        }
     }
 
     return (
