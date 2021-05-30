@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
+
+import { useHistory, useLocation } from "react-router";
 
 import * as S from './style';
-
 import * as I from 'asset/index';
 
 const Weather = () => {
+    const history = useHistory();
+    const location = useLocation();
+    const point = location.state.point;
+
+    const token = localStorage.getItem("accessToken");
+    const tokenType = localStorage.getItem("tokenType");
+
+    useEffect(() => {
+        axios.get(`http://localhost:8000/weather?nx=${point.x}&ny=${point.y}`, {
+            headers: {
+                'Authorization': `${tokenType} ${token}`
+            }
+        })
+        .then(res => {
+            console.log(res.data);
+        }).catch(err => {
+            alert("로그인을 다시 해주세요.");
+            localStorage.clear();
+            history.goBack();
+        })
+    }, []);
+
     return (
         <S.Container>
             <S.Date>2021년 05월 20일</S.Date>

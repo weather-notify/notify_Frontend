@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
-
 import axios from 'axios';
+
+import { useHistory } from 'react-router-dom';
 
 import * as S from './style';
 
 const Main = () => {
+    const history = useHistory();
+    
+    const token = localStorage.getItem("accessToken");
+    const tokenType = localStorage.getItem("tokenType");
+
     const [deep1, setDeep1] = useState([]);
     const [deep2, setDeep2] = useState([]);
     const [deep3, setDeep3] = useState([]);
@@ -13,6 +19,7 @@ const Main = () => {
     const [district, setDistrict] = useState('');
 
     useEffect(() => {
+        window.location.reload();
         getDeep1()
         deep2.unshift("-");
         deep3.unshift("-");
@@ -59,6 +66,25 @@ const Main = () => {
         setDistrict(e.target.value);
     }
 
+    const getPoint = () => {
+        city !== '' && county !== '' && district !== '' ?
+            axios.get(`http://localhost:8000/excel/coordinate?deep1=${city}&deep2=${county}&deep3=${district}`, {
+                headers: {
+                    'Authorization': `${tokenType} ${token}`
+                }
+            }) 
+            .then(res => {
+                history.push({
+                    pathname: '/weather',
+                    state: {point: res.data}
+                });
+            }).catch(err => {
+                alert("로그인이 필요한 서비스입니다.");
+            })
+        :
+            alert("지역을 모두 선택해주세요");
+    }
+
     return (
         <S.Container>
             <S.TitleContainer>
@@ -87,7 +113,7 @@ const Main = () => {
                     }
                 </S.SelectBox>
             </S.MenuContainer>
-            <S.SubmitButton>Submit</S.SubmitButton>
+            <S.SubmitButton onClick={getPoint}>Submit</S.SubmitButton>
         </S.Container>
     )
 }
