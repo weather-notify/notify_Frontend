@@ -26,7 +26,6 @@ const Weather = () => {
             alert("로그인을 다시 해주세요.");
             localStorage.clear();
             history.goBack();
-            window.location.reload();
         })
     }, []);
 
