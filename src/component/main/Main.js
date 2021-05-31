@@ -59,6 +59,27 @@ const Main = () => {
         setDistrict(e.target.value);
     }
 
+    const getPoint = () => {
+        city !== '' && county !== '' && district !== '' ?
+            axios.get(`http://localhost:8000/excel/coordinate?deep1=${city}&deep2=${county}&deep3=${district}`, {
+                headers: {
+                    'Authorization': `${tokenType} ${token}`
+                }
+            }) 
+            .then(res => {
+                console.log(res);
+                history.push({
+                    pathname: '/weather',
+                    state: {point: res.data}
+                });
+            }).catch(err => {
+                alert("로그인이 필요한 서비스입니다.");
+                localStorage.clear();
+            })
+        :
+            alert("지역을 모두 선택해주세요");
+    }
+
     return (
         <S.Container>
             <S.TitleContainer>
