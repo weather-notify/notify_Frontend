@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { useHistory, useLocation } from "react-router";
@@ -7,6 +7,7 @@ import * as S from './style';
 import * as I from 'asset/index';
 
 const Weather = () => {
+    const [arr, setArr] = useState([]);
     const history = useHistory();
     const location = useLocation();
     const point = location.state.point;
@@ -21,17 +22,23 @@ const Weather = () => {
             }
         })
         .then(res => {
-            console.log(res.data);
+            setArr(res.data);
         }).catch(err => {
             alert("로그인을 다시 해주세요.");
-            localStorage.clear();
+            // localStorage.clear();
             history.goBack();
+            window.location.reload();
         })
     }, []);
 
+    console.log(arr);
+
+    const date = arr[0]?.fcstDate;
+    const dateText = date && date.substr(0, 4) + "년 " + date.substr(4, 2) + "월 " + date.substr(6, 2) + "일"
+
     return (
         <S.Container>
-            <S.Date>2021년 05월 20일</S.Date>
+            <S.Date>{dateText && dateText}</S.Date>
             <S.TemperatureLine>
                 <S.Temperature>최저기온 : 3</S.Temperature>
                 <S.Temperature>최고기온 : 25</S.Temperature>
