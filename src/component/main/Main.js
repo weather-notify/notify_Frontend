@@ -19,7 +19,6 @@ const Main = () => {
     const [district, setDistrict] = useState('');
 
     useEffect(() => {
-        window.location.reload();
         getDeep1()
         deep2.unshift("-");
         deep3.unshift("-");
