@@ -8,9 +8,12 @@ export const Container = styled.div`
     align-items: center;
 `
 
+export const WhiteSpace = styled.div`
+    margin-top: 6%;
+`
+
 export const InputLine = styled.div`
     width: 60%;
-    height: 5%;
     margin-top: 1%;
 `
 
@@ -25,7 +28,10 @@ export const Info = styled.p`
     font-size: 2rem;
 `
 
-export const InputBox = styled.input`
+export const InputEmail = styled.input.attrs({
+    type: "email",
+    checked: true
+})`
     width: 70%;
     height: 100%;
     padding-top: 2%;
@@ -33,31 +39,6 @@ export const InputBox = styled.input`
     margin-top: 3.4%;
     margin-left: 1%;
     border: 1px solid;
-`
-
-export const InputEmail = styled.input.attrs({
-    type: "email",
-    checked: true
-})`
-    width: 53%;
-    height: 100%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    margin-top: 3.4%;
-    margin-left: 1%;
-    border: 1px solid;
-`
-
-export const InputError = styled.p`
-    font-size: 1rem;
-    color: red;
-    margin: 0 27% 0 0;
-`
-
-export const InputEmailInfo = styled.p`
-    font-size: 1rem;
-    color: greenyellow;
-    margin: 0 27% 0 0;
 `
 
 export const InputPassword = styled.input.attrs({
@@ -73,17 +54,6 @@ export const InputPassword = styled.input.attrs({
     border: 1px solid;
 `
 
-export const CheckButton = styled.button`
-    width: 15%;
-    height: 100%;
-    border: none;
-    border-radius: 50px;
-    padding: 2%;
-    margin: 2%;
-    color: rgba(0, 0, 200);
-    background-color: rgba(187, 215, 240);
-`
-
 export const SubmitButton = styled.button.attrs({
     type: 'submit'
 })`
@@ -94,6 +64,6 @@ export const SubmitButton = styled.button.attrs({
     background-color: rgba(0, 0, 200);
     border: none;
     border-radius: 50px;
-    margin: 1%;
-    left: 31%;
+    margin: 2%;
+    left: 34%;
 `
