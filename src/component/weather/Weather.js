@@ -3,11 +3,23 @@ import axios from 'axios';
 
 import { useHistory, useLocation } from "react-router";
 
+import WeatherTemperature from './WeatherTemperature';
+import WeatherList from './WeatherList';
+
 import * as S from './style';
-import * as I from 'asset/index';
 
 const Weather = () => {
     const [arr, setArr] = useState([]);
+    const [weatherTime, setWeatherTime] = useState([
+        {id:1, time: "0000"},
+        {id:2, time: "0300"},
+        {id:3, time: "0600"},
+        {id:4, time: "0900"},
+        {id:5, time: "1200"},
+        {id:6, time: "1500"},
+        {id:7, time: "1800"},
+        {id:8, time: "2100"},
+    ])
     const history = useHistory();
     const location = useLocation();
     const point = location.state.point;
@@ -31,101 +43,15 @@ const Weather = () => {
         })
     }, []);
 
-    console.log(arr);
-
     const date = arr[0]?.fcstDate;
     const dateText = date && date.substr(0, 4) + "년 " + date.substr(4, 2) + "월 " + date.substr(6, 2) + "일"
 
     return (
         <S.Container>
             <S.Date>{dateText && dateText}</S.Date>
-            <S.TemperatureLine>
-                <S.Temperature>최저기온 : 3</S.Temperature>
-                <S.Temperature>최고기온 : 25</S.Temperature>
-            </S.TemperatureLine>
+            <WeatherTemperature arr={arr} weatherTime={weatherTime} />
             <S.WeatherLine>
-                <S.WeatherDiv>
-                    <S.WeatherTime>00시</S.WeatherTime>
-                    <S.Image src={I.rain} />
-                    <S.WeatherInfoDiv>
-                        <S.WeatherInfo>강수확률 : </S.WeatherInfo>
-                        <S.WeatherInfo>습도 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍향 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍속 : </S.WeatherInfo>
-                    </S.WeatherInfoDiv>
-                </S.WeatherDiv>
-                <S.WeatherDiv>
-                    <S.WeatherTime>03시</S.WeatherTime>
-                    <S.Image src={I.snow} />
-                    <S.WeatherInfoDiv>
-                        <S.WeatherInfo>강수확률 : </S.WeatherInfo>
-                        <S.WeatherInfo>습도 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍향 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍속 : </S.WeatherInfo>
-                    </S.WeatherInfoDiv>
-                    </S.WeatherDiv>
-                <S.WeatherDiv>
-                    <S.WeatherTime>06시</S.WeatherTime>
-                    <S.Image src={I.sunny} />
-                    <S.WeatherInfoDiv>
-                        <S.WeatherInfo>강수확률 : </S.WeatherInfo>
-                        <S.WeatherInfo>습도 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍향 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍속 : </S.WeatherInfo>
-                    </S.WeatherInfoDiv>
-                </S.WeatherDiv>
-                <S.WeatherDiv>
-                    <S.WeatherTime>09시</S.WeatherTime>
-                    <S.Image src={I.windy} />
-                    <S.WeatherInfoDiv>
-                        <S.WeatherInfo>강수확률 : </S.WeatherInfo>
-                        <S.WeatherInfo>습도 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍향 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍속 : </S.WeatherInfo>
-                    </S.WeatherInfoDiv>
-                </S.WeatherDiv>
-            </S.WeatherLine>
-            <S.WeatherLine>
-                <S.WeatherDiv>
-                    <S.WeatherTime>12시</S.WeatherTime>
-                    <S.Image src={I.snow} />
-                    <S.WeatherInfoDiv>
-                        <S.WeatherInfo>강수확률 : </S.WeatherInfo>
-                        <S.WeatherInfo>습도 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍향 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍속 : </S.WeatherInfo>
-                    </S.WeatherInfoDiv>
-                </S.WeatherDiv>
-                <S.WeatherDiv>
-                    <S.WeatherTime>15시</S.WeatherTime>
-                    <S.Image src={I.windy} />
-                    <S.WeatherInfoDiv>
-                        <S.WeatherInfo>강수확률 : </S.WeatherInfo>
-                        <S.WeatherInfo>습도 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍향 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍속 : </S.WeatherInfo>
-                    </S.WeatherInfoDiv>
-                </S.WeatherDiv>
-                <S.WeatherDiv>
-                    <S.WeatherTime>18시</S.WeatherTime>
-                    <S.Image src={I.cloud} />
-                    <S.WeatherInfoDiv>
-                        <S.WeatherInfo>강수확률 : </S.WeatherInfo>
-                        <S.WeatherInfo>습도 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍향 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍속 : </S.WeatherInfo>
-                    </S.WeatherInfoDiv>
-                </S.WeatherDiv>
-                <S.WeatherDiv>
-                    <S.WeatherTime>21시</S.WeatherTime>
-                    <S.Image src={I.cloud} />
-                    <S.WeatherInfoDiv>
-                        <S.WeatherInfo>강수확률 : </S.WeatherInfo>
-                        <S.WeatherInfo>습도 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍향 : </S.WeatherInfo>
-                        <S.WeatherInfo>풍속 : </S.WeatherInfo>
-                    </S.WeatherInfoDiv>
-                </S.WeatherDiv>
+                <WeatherList arr={arr} weatherTime={weatherTime} />
             </S.WeatherLine>
         </S.Container>
     )
