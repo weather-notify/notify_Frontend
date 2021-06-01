@@ -80,6 +80,7 @@ const Main = () => {
                 });
             }).catch(err => {
                 alert("로그인이 필요한 서비스입니다.");
+                localStorage.clear();
             })
         :
             alert("지역을 모두 선택해주세요");
