@@ -11,9 +11,9 @@ const WeatherTemperature = ({arr, weatherTime}) => {
         weatherTime[5]?.time === item?.fcstTime
     ));
 
-    const lowTempText = lowTemp && "최저기온 : " + lowTemp[7]?.fcstValue;
+    const lowTempText = lowTemp && "최저기온 : " + lowTemp[7]?.fcstValue + "˚";
 
-    const highTempText = highTemp && "최고기온 : " + highTemp[5]?.fcstValue;
+    const highTempText = highTemp && "최고기온 : " + highTemp[5]?.fcstValue + "˚";
 
     return (
         <S.Container>
