@@ -16,7 +16,7 @@ export const Date = styled.div`
 
 export const TemperatureLine = styled.div`
     width: 100%;
-    padding: 1%;
+    padding-left: 1%;
     display: flex;
     justify-content: center;
 `
