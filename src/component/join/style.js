@@ -22,7 +22,7 @@ export const InfoDiv = styled.div`
 
 export const Info = styled.p`
     text-align: right;
-    font-size: 2rem;
+    font-size: 2vw;
 `
 
 export const InputBox = styled.input`
@@ -49,13 +49,13 @@ export const InputEmail = styled.input.attrs({
 `
 
 export const InputError = styled.p`
-    font-size: 1rem;
+    font-size: 1vw;
     color: red;
     margin: 0 27% 0 0;
 `
 
 export const InputEmailInfo = styled.p`
-    font-size: 1rem;
+    font-size: 1vw;
     color: greenyellow;
     margin: 0 27% 0 0;
 `
@@ -89,7 +89,7 @@ export const SubmitButton = styled.button.attrs({
 })`
     width: 30%;
     padding: 1%;
-    font-size: 1.3rem;
+    font-size: 1.3vw;
     color: white;
     background-color: rgba(0, 0, 200);
     border: none;
