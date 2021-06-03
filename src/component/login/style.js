@@ -25,7 +25,7 @@ export const InfoDiv = styled.div`
 
 export const Info = styled.p`
     text-align: right;
-    font-size: 2rem;
+    font-size: 2vw;
 `
 
 export const InputEmail = styled.input.attrs({
@@ -59,7 +59,7 @@ export const SubmitButton = styled.button.attrs({
 })`
     width: 30%;
     padding: 1%;
-    font-size: 1.3rem;
+    font-size: 1.3vw;
     color: white;
     background-color: rgba(0, 0, 200);
     border: none;
