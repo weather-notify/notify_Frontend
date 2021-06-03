@@ -3,8 +3,8 @@ import axios from 'axios';
 
 import { useHistory, useLocation } from "react-router";
 
-import WeatherTemperature from './WeatherTemperature';
-import WeatherList from './WeatherList';
+import WeatherTemperature from './weatherTemp/WeatherTemperature';
+import WeatherList from './weatherList/WeatherList';
 
 import * as S from './style';
 
@@ -37,9 +37,9 @@ const Weather = () => {
             setArr(res.data);
         }).catch(err => {
             alert("로그인을 다시 해주세요.");
-            // localStorage.clear();
-            history.goBack();
+            localStorage.clear();
             window.location.reload();
+            history.push('/');
         })
     }, []);
 
